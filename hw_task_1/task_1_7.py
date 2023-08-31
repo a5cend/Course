@@ -3,3 +3,4 @@ def days(years: int, months: int):
 
 
 print(days(1, 12))
+# 696

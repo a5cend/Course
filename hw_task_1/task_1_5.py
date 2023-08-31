@@ -8,3 +8,4 @@ def question():
 
 
 print(question())
+# YES

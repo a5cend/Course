@@ -7,3 +7,4 @@ def positive_count(list1):
 
 
 print(positive_count([1, -2, 3, -4, -5]))
+# 2

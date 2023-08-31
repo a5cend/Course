@@ -6,3 +6,7 @@ def condition(chislo):
 
 
 print(condition(-200))
+# -
+
+print(condition(20))
+# +

@@ -6,3 +6,4 @@ def factorial(number):
 
 
 print(factorial(6))
+# 720

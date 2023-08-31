@@ -7,5 +7,5 @@ def exc(s):
     return new_s
 
 
-
 print(exc('Hello World!'))
+# HW

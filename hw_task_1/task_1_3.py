@@ -4,3 +4,4 @@ def add(array):
 
 
 print(add([123, 124]))
+# [123, 124, 125]
