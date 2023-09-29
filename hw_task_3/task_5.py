@@ -90,3 +90,4 @@ while not (len(t1.apples) == 0 and count > 7):
     count += 1
 
 print(f'Все яблоки собраны, циклов {count}')
+
