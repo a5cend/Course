@@ -59,8 +59,7 @@ class Neural:
         # print(dataset[0])
         self.dataset = [(dataset[i][None, ...], int(target[i])) for i in range(len(target))]
 
-
-    def inference(selfself, x):
+    def inference(self, x):
         if not self.nn_weights:
             raise Exception('Сеть не обучена')
 
@@ -71,7 +70,6 @@ class Neural:
 
         return np.argmax(z)
 
-
     def calc_accuracy(self):
         correct = 0
         for x, y in self.dataset:
@@ -81,14 +79,13 @@ class Neural:
 
         return correct / len(self.dataset)
 
-
     def training(self):
         self.data_preparation()
 
         self.nn_weights['W1'] = np.random.rand(self.input_dim, self.h_dim)
         self.nn_weights['b1'] = np.random.rand(1, self.h_dim)
         self.nn_weights['W2'] = np.random.rand(self.h_dim, self.output_dim)
-        self.nn_weights['b2'] = np.random.rand(1, self.h_dim)
+        self.nn_weights['b2'] = np.random.rand(1, self.output_dim)
 
         self.nn_weights['W1'] = (self.nn_weights['W1'] - 0.5) * 2 * np.sqrt(1 / self.input_dim)
         self.nn_weights['b1'] = (self.nn_weights['b1'] - 0.5) * 2 * np.sqrt(1 / self.input_dim)
@@ -107,7 +104,8 @@ class Neural:
                 # Forward
                 t1 = x @ self.nn_weights['W1'] + self.nn_weights['b1']
                 h1 = self.relu(t1)
-                t2 = h1 @ self.nn_weights['W2'] + self.nn_weights['b2']
+                t2 = h1 @ self.nn_weights['W2']
+                t2 += self.nn_weights['b2']
                 z = self.softmax_batch(t2)
                 E = np.sum(self.sparse_cross_entropy_batch(z, y))
 
@@ -134,4 +132,3 @@ class Neural:
 
         plt.plot(loss_arr)
         plt.savefig('graph_training.png')
-
